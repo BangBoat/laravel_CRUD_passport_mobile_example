@@ -23,11 +23,12 @@ Route::middleware('auth:api')->group(function (){
     Route::resource('test', 'TestController');
     Route::get('user/logout', 'LoginController@logout');
     //for controller with tokens 
+    Route::get('scan/{id}', 'ScanController@show');
+    Route::post('search', 'SearchController@search');
+    Route::get('search', 'SearchController@index');
+    Route::get('economic', 'EconomicViewController@index');
 });
-Route::get('scan/{id}', 'ScanController@show');
-Route::post('search', 'SearchController@search');
-Route::get('search', 'SearchController@index');
-Route::get('economic', 'EconomicViewController@index');
+
 Route::prefix('user')->group(function (){
     Route::resource('registration', 'RegisterController', ['only' => ['store']]);
 
